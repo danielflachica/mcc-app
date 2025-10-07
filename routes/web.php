@@ -1,31 +1,34 @@
 <?php
 
-// use Auth;
-
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $posts = [];
-    // if (Auth::check()) { // Check if user is authenticated
-    //     $posts = Auth::user()->posts()->latest()->get();
-    if (auth()->check()) { // Check if user is authenticated
-        $posts = auth()->user()->posts()->latest()->get();
-    }
-    return view('/landing', ['posts' => $posts]);
+Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        $posts = [];
+        // if (Auth::check()) { // Check if user is authenticated
+        //     $posts = Auth::user()->posts()->latest()->get();
+        if (Auth::check()) { // Check if user is authenticated
+            $posts = Auth::user()->posts()->latest()->get();
+        }
+        return view('/landing', ['posts' => $posts]);
+    });
+
+    Route::get('/login', function () {
+        return view('/login');
+    });
+
+    Route::get('/register', function () {
+        return view('/register');
+    });
+
+    Route::post('/register', [UserController::class, 'register']);
+    Route::post('/login', [UserController::class, 'login']);
 });
 
-Route::get('/login', function () {
-    return view('/login');
-});
-Route::get('/register', function () {
-    return view('/register');
-});
-
-Route::post('/register', [UserController::class, 'register']);
-Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

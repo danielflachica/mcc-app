@@ -34,6 +34,7 @@ Route::post('/logout', [UserController::class, 'logout']);
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/admin/create-user', [AdminController::class, 'create']);
+    Route::post('/admin/create-user', [AdminController::class, 'store']);
     Route::get('/admin/edit-user/{user}', [AdminController::class, 'edit']);
     Route::put('/admin/edit-user/{user}', [AdminController::class, 'update']);
     Route::delete('/admin/delete-user/{user}', [AdminController::class, 'destroy']);

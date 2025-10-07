@@ -26,6 +26,7 @@
         <button type="submit" class="btn btn-primary">Save Post</button> --}}
     </form>
 </x-card>
+
 @endauth
 
 @endsection

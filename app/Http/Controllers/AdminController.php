@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\User;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -26,8 +27,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        echo 'create user';
-        //
+        $userRoles = UserRole::all();
+
+        return view('admin.users.create', compact('userRoles'));
     }
 
     /**
@@ -35,7 +37,19 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedFields = $request->validate([
+            'user_role_id' => 'required|integer',
+            'name' => 'required|min:3|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|max:255'
+        ]);
+
+        $validatedFields['name'] = strip_tags($validatedFields['name']);
+        $validatedFields['password'] = bcrypt($validatedFields['password']);
+
+        User::create($validatedFields);
+
+        return redirect('/');
     }
 
     /**

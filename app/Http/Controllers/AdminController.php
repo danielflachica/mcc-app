@@ -14,11 +14,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // TODO: Use middleware
         $users = User::orderBy('user_role_id')->get();
-        // $users = User::all();
 
-        // return view('admin.index', ['users' => $users]);
         return view('admin.index', compact('users'));
     }
 
@@ -65,19 +62,26 @@ class AdminController extends Controller
      */
     public function edit(User $user)
     {
-        // if (Auth::user()) { // TODO: Use middleware for this
-        //     return redirect('/');
-        // }
+        $userRoles = UserRole::all();
 
-        return view('admin.users.edit', ['user' => $user]);
+        return view('admin.users.edit', compact('user', 'userRoles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $validatedFields = $request->validate([
+            'user_role_id' => 'required|integer',
+            'name' => 'required|min:3|max:255'
+        ]);
+
+        $validatedFields['name'] = strip_tags($validatedFields['name']);
+
+        $user->update($validatedFields);
+
+        return redirect('/');
     }
 
     /**
@@ -85,9 +89,7 @@ class AdminController extends Controller
      */
     public function destroy(User $user)
     {
-        // if (Auth::user() && Auth::user()->id === $post->user_id) { // TODO: Use middleware for this
         $user->delete();
-        // }
 
         return redirect('/admin');
     }

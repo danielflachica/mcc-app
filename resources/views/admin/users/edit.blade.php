@@ -11,19 +11,32 @@
         <h3>Edit User</h3>
     </x-slot>
 
-    <form action="/edit-user/{{ $user->id }}" method="POST">
+    <form action="/admin/edit-user/{{ $user->id }}" method="POST">
         @csrf
         @method('PUT')
-        {{-- <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" name="title" value="{{ $post->title }}">
+        <div class="mb-3">
+            <label for="inputName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="inputName" name="name" value="{{ old('name', $user->name) }}"
+                required>
         </div>
         <div class="mb-3">
-            <label for="body" class="form-label">Content</label>
-            <textarea class="form-control" name="body"
-                placeholder="Enter your content here...">{{ $post->body }}</textarea>
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" name="email"
+                value="{{ old('email', $user->email) }}" disabled>
         </div>
-        <button type="submit" class="btn btn-primary">Save Post</button> --}}
+        <div class="mb-3">
+            <label for="inputRoleID" class="form-label">Role</label>
+            <select class="form-select" id="inputRoleID" name="user_role_id" required>
+                <option>-- Select --</option>
+                @foreach ($userRoles as $role)
+                <option value="{{ $role->id }}" {{ old('user_role_id', $user->user_role_id) == $role->id ? 'selected' :
+                    '' }}>
+                    {{ $role->name }}
+                </option>
+                @endforeach
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save User</button>
     </form>
 </x-card>
 

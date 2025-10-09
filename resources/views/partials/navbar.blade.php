@@ -11,10 +11,10 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                    <a class="nav-link" href="{{ route('home') }}">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/posts">Posts</a>
+                    <a class="nav-link" href="{{ route('home') }}">Posts</a>
                 </li>
                 @endauth
             </ul>
@@ -27,17 +27,17 @@
                     </div>
                 </li>
                 <li class="nav-item d-flex align-items-center">
-                    <form action="/logout" method="POST" class="d-inline">
+                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
                         @csrf
                         <button class="btn btn-sm btn-outline-danger">Logout</button>
                     </form>
                 </li>
                 @else
                 <li class="nav-item me-2">
-                    <a class="btn btn-sm btn-outline-primary" href="/login">Login</a>
+                    <a class="btn btn-sm btn-outline-primary" href="{{ route('login') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-sm btn-primary" href="/register">Register</a>
+                    <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Register</a>
                 </li>
                 @endauth
             </ul>

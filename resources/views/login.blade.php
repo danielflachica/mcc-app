@@ -9,7 +9,7 @@
         <h3>Login</h3>
     </x-slot>
 
-    <form action="/login" method="POST">
+    <form action="{{ route('login') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="loginEmail" class="form-label">Email</label>

@@ -46,7 +46,7 @@ class AdminController extends Controller
 
         User::create($validatedFields);
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     /**
@@ -81,7 +81,7 @@ class AdminController extends Controller
 
         $user->update($validatedFields);
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     /**
@@ -91,6 +91,6 @@ class AdminController extends Controller
     {
         $user->delete();
 
-        return redirect('/admin');
+        return redirect()->route('admin.index');
     }
 }

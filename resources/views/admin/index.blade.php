@@ -9,7 +9,7 @@
     <x-slot name="header">
         <div class="d-flex justify-content-between align-items-center">
             <h3>All Users</h3>
-            <a href="/admin/create-user">
+            <a href="{{ route('admin.create') }}">
                 <button type="button" class="btn btn-sm btn-primary">Add User</button>
             </a>
         </div>
@@ -36,10 +36,10 @@
                         <td>{{ $user->email }}</td>
                         <td>
                             <div class="d-flex align-items-center gap-2">
-                                <a href="/admin/edit-user/{{ $user->id }}">
+                                <a href="{{ route('admin.edit', $user->id) }}">
                                     <button type="button" class="btn btn-sm btn-primary">Edit</button>
                                 </a>
-                                <form action="/admin/delete-user/{{ $user->id }}" method="POST">
+                                <form action="{{ route('admin.destroy', $user->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-sm btn-danger">Delete</button>

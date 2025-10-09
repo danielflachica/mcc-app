@@ -34,7 +34,7 @@ class PostController extends Controller
 
         Post::create($validatedFields);
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     /**
@@ -59,7 +59,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         if (Auth::user() && Auth::user()->id !== $post->user_id) { // TODO: Use middleware for this
-            return redirect('/');
+            return redirect()->route('home');
         }
 
         return view('posts.edit', ['post' => $post]);
@@ -71,7 +71,7 @@ class PostController extends Controller
     public function update(Post $post, Request $request)
     {
         if (Auth::user() && Auth::user()->id !== $post->user_id) { // TODO: Use middleware for this
-            return redirect('/');
+            return redirect()->route('home');
         }
 
         $validatedFields = $request->validate([
@@ -85,7 +85,7 @@ class PostController extends Controller
 
         $post->update($validatedFields);
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     /**
@@ -97,6 +97,6 @@ class PostController extends Controller
             $post->delete();
         }
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 }

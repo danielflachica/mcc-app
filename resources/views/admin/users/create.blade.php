@@ -11,7 +11,7 @@
         <h3>Add a New User</h3>
     </x-slot>
 
-    <form action="/admin/create-user" method="POST">
+    <form action="{{ route('admin.create') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="inputName" class="form-label">Name</label>

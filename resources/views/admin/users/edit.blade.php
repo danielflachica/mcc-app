@@ -11,7 +11,7 @@
         <h3>Edit User</h3>
     </x-slot>
 
-    <form action="/admin/edit-user/{{ $user->id }}" method="POST">
+    <form action="{{ route('admin.update', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -29,7 +29,8 @@
             <select class="form-select" id="inputRoleID" name="user_role_id" required>
                 <option>-- Select --</option>
                 @foreach ($userRoles as $role)
-                <option value="{{ $role->id }}" {{ old('user_role_id', $user->user_role_id) == $role->id ? 'selected' :
+                <option value="{{ $role->id }}" {{ old('user_role_id', $user->user_role_id) == $role->id ?
+                    'selected' :
                     '' }}>
                     {{ $role->name }}
                 </option>

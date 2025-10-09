@@ -22,7 +22,7 @@ class UserController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     public function login(Request $request)
@@ -52,12 +52,13 @@ class UserController extends Controller
         // return back()->withErrors([
         //     'loginEmail' => 'Invalid credentials.',
         // ]);
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+
+        return redirect()->route('home');
     }
 }

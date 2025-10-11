@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserRoleSeeder extends Seeder
 {
@@ -14,13 +14,16 @@ class UserRoleSeeder extends Seeder
     public function run(): void
     {
         DB::table('user_roles')->insert([
-            'name' => 'Admin'
+            'name' => 'Admin',
+            'created_at' => Carbon::now(),
         ]);
         DB::table('user_roles')->insert([
-            'name' => 'Provider'
+            'name' => 'Provider',
+            'created_at' => Carbon::now(),
         ]);
         DB::table('user_roles')->insert([
-            'name' => 'Client'
+            'name' => 'Client',
+            'created_at' => Carbon::now(),
         ]);
     }
 }

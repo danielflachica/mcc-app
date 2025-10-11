@@ -4,7 +4,9 @@
     </p>
     <p class="m-0">
         <a href="/" class="text-decoration-none text-secondary">Home</a> ·
-        <a href="/about" class="text-decoration-none text-secondary">About</a> ·
-        <a href="/contact" class="text-decoration-none text-secondary">Contact</a>
+        <a href="https://mindcareclub.org/1793-2-2/" target="_blank"
+            class="text-decoration-none text-secondary">About</a> ·
+        <a href="https://mindcareclub.org/contactus/" target="_blank"
+            class="text-decoration-none text-secondary">Contact</a>
     </p>
 </footer>

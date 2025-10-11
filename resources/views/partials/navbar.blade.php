@@ -10,12 +10,22 @@
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 @auth
+                @if (auth()->user()->role->name == "Admin")
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Dashboard</a>
+                    <a class="nav-link" href="{{ route('home') }}">Users</a>
+                </li>
+                @elseif (auth()->user()->role->name == "Provider")
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('provider.schedule.index') }}">Schedules</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Posts</a>
+                    <a class="nav-link" href="{{ route('provider.appointment.index') }}">Appointments</a>
                 </li>
+                @elseif(auth()->user()->role->name == "Client")
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('client.appointment.index') }}">Appointments</a>
+                </li>
+                @endif
                 @endauth
             </ul>
 

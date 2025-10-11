@@ -17,10 +17,10 @@ class UserRoleSeeder extends Seeder
             'name' => 'Admin'
         ]);
         DB::table('user_roles')->insert([
-            'name' => 'Doctor'
+            'name' => 'Provider'
         ]);
         DB::table('user_roles')->insert([
-            'name' => 'Patient'
+            'name' => 'Client'
         ]);
     }
 }

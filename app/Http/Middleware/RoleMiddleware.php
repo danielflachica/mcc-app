@@ -17,15 +17,15 @@ class RoleMiddleware
     public function handle(Request $request, Closure $next, $role): Response
     {
         if (!Auth::check()) {
-            return redirect('/login');
+            return redirect()->route('login');
         }
 
         $user = Auth::user();
 
         $roles = [
             'admin' => 1,
-            'doctor' => 2,
-            'patient' => 3
+            'provider' => 2,
+            'client' => 3
         ];
 
         if (!is_numeric($role) && $user->user_role_id != ($roles[$role] ?? null)) {

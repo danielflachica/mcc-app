@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -26,23 +28,42 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('index');
-    Route::get('/admin/create-user', [AdminController::class, 'create'])->name('create');
-    Route::post('/admin/create-user', [AdminController::class, 'store'])->name('store');
-    Route::get('/admin/edit-user/{user}', [AdminController::class, 'edit'])->name('edit');
-    Route::put('/admin/edit-user/{user}', [AdminController::class, 'update'])->name('update');
-    Route::delete('/admin/delete-user/{user}', [AdminController::class, 'destroy'])->name('destroy');
+Route::middleware(['auth', 'role:admin'])->prefix('/admin')->name('admin.')->group(function () {
+    Route::get('', [AdminController::class, 'index'])->name('index');
+    Route::get('/create-user', [AdminController::class, 'create'])->name('create');
+    Route::post('/create-user', [AdminController::class, 'store'])->name('store');
+    Route::get('/edit-user/{user}', [AdminController::class, 'edit'])->name('edit');
+    Route::put('/edit-user/{user}', [AdminController::class, 'update'])->name('update');
+    Route::delete('/delete-user/{user}', [AdminController::class, 'destroy'])->name('destroy');
 });
 
-Route::middleware(['auth', 'role:doctor'])->name('doctor.')->group(function () {
-    // Route::get('/doctor', [DoctorController::class, 'index']);
+Route::middleware(['auth', 'role:provider'])->prefix('/provider')->name('provider.')->group(function () {
+    Route::get('', [ProviderController::class, 'index'])->name('index');
+
+    Route::name('schedule.')->group(function () {
+        Route::get('/schedules', function () {
+            return 'Provider Sched';
+        })->name('index');
+    });
+
+    Route::name('appointment.')->group(function () {
+        Route::get('/appointments', function () {
+            return 'Provider Appointments';
+        })->name('index');
+    });
 });
 
-Route::middleware(['auth', 'role:patient'])->name('patient.')->group(function () {
-    Route::get('/patient', [PostController::class, 'index'])->name('index');
-    Route::post('/create-post', [PostController::class, 'create'])->name('create');
-    Route::get('/edit-post/{post}', [PostController::class, 'edit'])->name('edit');
-    Route::put('/edit-post/{post}', [PostController::class, 'update'])->name('update');
-    Route::delete('/delete-post/{post}', [PostController::class, 'destroy'])->name('destroy');
+Route::middleware(['auth', 'role:client'])->prefix('/client')->name('client.')->group(function () {
+    Route::get('', [ClientController::class, 'index'])->name('index');
+
+    Route::name('appointment.')->group(function () {
+        Route::get('/appointments', function () {
+            return 'My Appointments';
+        })->name('index');
+    });
+
+    // Route::post('/create-post', [PostController::class, 'create'])->name('create');
+    // Route::get('/edit-post/{post}', [PostController::class, 'edit'])->name('edit');
+    // Route::put('/edit-post/{post}', [PostController::class, 'update'])->name('update');
+    // Route::delete('/delete-post/{post}', [PostController::class, 'destroy'])->name('destroy');
 });

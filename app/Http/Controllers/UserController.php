@@ -39,13 +39,13 @@ class UserController extends Controller
 
             switch ($user->user_role_id) {
                 case 1:
-                    return redirect('/admin');
+                    return redirect()->route('admin.index');
                 case 2:
-                    return redirect('/doctor');
+                    return redirect()->route('provider.index');
                 case 3:
-                    return redirect('/patient');
+                    return redirect()->route('client.index');
                 default:
-                    return redirect('/');
+                    return redirect()->route('home');
             }
         }
 

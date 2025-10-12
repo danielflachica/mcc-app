@@ -13,5 +13,7 @@ class ScheduleStatus extends Model
      */
     protected $fillable = [
         'name',
+        'background_color',
+        'text_color',
     ];
 }

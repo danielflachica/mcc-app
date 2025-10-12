@@ -40,7 +40,7 @@ class ScheduleController extends Controller
             'notes' => 'nullable|string|max:500',
         ]);
 
-        $validatedFields['schedule_status_id'] = 1; // Available
+        $validatedFields['schedule_status_id'] = ScheduleStatus::where('name', 'Available')->value('id');
         $validatedFields['notes'] = strip_tags($validatedFields['notes']);
         $validatedFields['provider_id'] = Auth::id();
 

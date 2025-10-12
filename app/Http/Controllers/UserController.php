@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\User;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,7 +17,7 @@ class UserController extends Controller
             'password' => 'required|min:8|max:255'
         ]);
 
-        $validatedFields['user_role_id'] = 3; // Client
+        $validatedFields['user_role_id'] = UserRole::where('name', 'Client')->value('id');
         $validatedFields['password'] = bcrypt($validatedFields['password']);
 
         $user = User::create($validatedFields);

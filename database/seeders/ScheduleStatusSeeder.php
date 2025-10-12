@@ -15,18 +15,26 @@ class ScheduleStatusSeeder extends Seeder
     {
         DB::table('schedule_statuses')->insert([
             'name' => 'Available',
+            'background_color' => '#2F8F9D',
+            'text_color' => '#FFFFFF',
             'created_at' => Carbon::now(),
         ]);
         DB::table('schedule_statuses')->insert([
             'name' => 'Booked',
+            'background_color' => '#F4B942',
+            'text_color' => '#3B2E05',
             'created_at' => Carbon::now(),
         ]);
         DB::table('schedule_statuses')->insert([
             'name' => 'Cancelled',
+            'background_color' => '#E35B5B',
+            'text_color' => '#FFFFFF',
             'created_at' => Carbon::now(),
         ]);
         DB::table('schedule_statuses')->insert([
             'name' => 'Completed',
+            'background_color' => '#5BA67D',
+            'text_color' => '#FFFFFF',
             'created_at' => Carbon::now(),
         ]);
     }

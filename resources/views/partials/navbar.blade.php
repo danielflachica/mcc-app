@@ -33,7 +33,7 @@
                 @auth
                 <li class="nav-item d-flex align-items-center">
                     <div class="navbar-text me-3">
-                        Welcome back, <strong>{{ auth()->user()->name }}</strong>!
+                        Hello, <strong>{{ auth()->user()->name }}</strong>!
                     </div>
                 </li>
                 <li class="nav-item d-flex align-items-center">

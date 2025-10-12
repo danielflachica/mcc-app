@@ -14,19 +14,19 @@ class ScheduleStatusSeeder extends Seeder
     public function run(): void
     {
         DB::table('schedule_statuses')->insert([
-            'status' => 'Available',
+            'name' => 'Available',
             'created_at' => Carbon::now(),
         ]);
         DB::table('schedule_statuses')->insert([
-            'status' => 'Booked',
+            'name' => 'Booked',
             'created_at' => Carbon::now(),
         ]);
         DB::table('schedule_statuses')->insert([
-            'status' => 'Cancelled',
+            'name' => 'Cancelled',
             'created_at' => Carbon::now(),
         ]);
         DB::table('schedule_statuses')->insert([
-            'status' => 'Completed',
+            'name' => 'Completed',
             'created_at' => Carbon::now(),
         ]);
     }

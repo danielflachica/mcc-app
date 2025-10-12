@@ -12,6 +12,6 @@ class ScheduleStatus extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'status',
+        'name',
     ];
 }

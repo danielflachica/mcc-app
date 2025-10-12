@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -40,10 +41,13 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->name('admin.')->gro
 Route::middleware(['auth', 'role:provider'])->prefix('/provider')->name('provider.')->group(function () {
     Route::get('', [ProviderController::class, 'index'])->name('index');
 
-    Route::name('schedule.')->group(function () {
-        Route::get('/schedules', function () {
-            return 'Provider Sched';
-        })->name('index');
+    Route::name('schedule.')->prefix('/schedules')->group(function () {
+        Route::get('/', [ScheduleController::class, 'index'])->name('index');
+        Route::get('/create', [ScheduleController::class, 'create'])->name('create');
+        Route::post('/create', [ScheduleController::class, 'store'])->name('store');
+        Route::get('/edit/{schedule}', [ScheduleController::class, 'edit'])->name('edit');
+        Route::put('/edit/{schedule}', [ScheduleController::class, 'update'])->name('update');
+        Route::delete('/delete/{schedule}', [ScheduleController::class, 'destroy'])->name('destroy');
     });
 
     Route::name('appointment.')->group(function () {

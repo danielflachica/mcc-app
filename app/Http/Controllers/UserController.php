@@ -16,6 +16,7 @@ class UserController extends Controller
             'password' => 'required|min:8|max:255'
         ]);
 
+        $validatedFields['user_role_id'] = 3; // Client
         $validatedFields['password'] = bcrypt($validatedFields['password']);
 
         $user = User::create($validatedFields);

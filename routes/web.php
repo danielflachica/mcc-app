@@ -43,6 +43,7 @@ Route::middleware(['auth', 'role:provider'])->prefix('/provider')->name('provide
 
     Route::name('schedule.')->prefix('/schedules')->group(function () {
         Route::get('/', [ScheduleController::class, 'index'])->name('index');
+        Route::get('/events', [ScheduleController::class, 'events'])->name('events');
         Route::get('/create', [ScheduleController::class, 'create'])->name('create');
         Route::post('/create', [ScheduleController::class, 'store'])->name('store');
         Route::get('/edit/{schedule}', [ScheduleController::class, 'edit'])->name('edit');

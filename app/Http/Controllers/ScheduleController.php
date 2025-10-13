@@ -95,4 +95,30 @@ class ScheduleController extends Controller
 
         return redirect()->route('provider.schedule.index');
     }
+
+    /**
+     * Return all schedules as a JSON object
+     */
+    public function events()
+    {
+        $schedules = Schedule::with(['provider', 'client', 'status'])->get();
+
+        // Transform to only include the properties FullCalendar needs
+        $events = $schedules->map(function ($schedule) {
+            return [
+                'id' => $schedule->id,
+                'title' => $schedule->notes ?? 'Appointment', // fallback if notes is null
+                'start' => $schedule->starts_at,
+                'end' => $schedule->ends_at,
+                'display' => 'block',
+                'status' => $schedule->status->name ?? null,
+                'provider' => $schedule->provider->name ?? null,
+                'client' => $schedule->client->name ?? null,
+                'backgroundColor' => $schedule->status->background_color ?? null,
+                'borderColor' => $schedule->status->background_color ?? null,
+            ];
+        });
+
+        return response()->json($events);
+    }
 }

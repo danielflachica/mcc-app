@@ -2,25 +2,35 @@
 
 @section('title', 'Mindcare Club | Client Dashboard')
 
+@section('header')
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js'></script>
+<script>
+    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var events = [];
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next,today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            initialView: 'dayGridMonth',
+            timeZone: userTimeZone,
+            events: '/client/appointments/events',
+        });
+        calendar.render();
+    });
+</script>
+
+@endsection
+
 @section('content')
 
 @auth
-<x-card>
-    <x-slot name="header">
-        <div class="d-flex justify-content-between align-items-center">
-            <h3>Dashboard</h3>
-            <a href="{{ route('client.appointment.index') }}">
-                <button type="button" class="btn btn-sm btn-primary">Manage Appointments</button>
-            </a>
-        </div>
-    </x-slot>
-
-    <div class="container">
-        <div class="alert alert-info w-100 mt-3" role="alert">
-            HELLO CLIENT
-        </div>
-    </div>
-</x-card>
+<div id="calendar"></div>
 @endauth
 
 @endsection

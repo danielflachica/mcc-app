@@ -7,16 +7,16 @@ use App\Models\Schedule;
 use App\Models\ScheduleStatus;
 use Illuminate\Http\Request;
 
-class ScheduleController extends Controller
+class AppointmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $schedules = Schedule::where('provider_id', Auth::id())->orderBy('created_at', 'DESC')->get();
+        $schedules = Schedule::where('client_id', Auth::id())->orderBy('starts_at', 'DESC')->get();
 
-        return view('provider.schedules.index', compact('schedules'));
+        return view('client.schedules.index', compact('schedules'));
     }
 
     /**
@@ -24,9 +24,7 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        $statuses = ScheduleStatus::all();
-
-        return view('provider.schedules.create', compact('statuses'));
+        //
     }
 
     /**
@@ -34,27 +32,13 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedFields = $request->validate([
-            'starts_at' => 'required|date|after_or_equal:now',
-            'ends_at' => 'required|date|after:starts_at',
-            'notes' => 'nullable|string|max:500',
-        ]);
-
-        // TO-DO: start/end overlap validation
-
-        $validatedFields['schedule_status_id'] = ScheduleStatus::where('name', 'Available')->value('id');
-        $validatedFields['notes'] = strip_tags($validatedFields['notes']);
-        $validatedFields['provider_id'] = Auth::id();
-
-        Schedule::create($validatedFields);
-
-        return redirect()->route('provider.schedule.index');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Schedule $schedule)
+    public function show(string $id)
     {
         //
     }
@@ -62,11 +46,12 @@ class ScheduleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Schedule $schedule)
+    public function edit()
     {
-        $statuses = ScheduleStatus::all();
+        $availableID = ScheduleStatus::where('name', 'Available')->value('id');
+        $schedules = Schedule::where('schedule_status_id', $availableID)->get();
 
-        return view('provider.schedules.edit', compact('schedule', 'statuses'));
+        return view('client.schedules.edit', compact('schedules'));
     }
 
     /**
@@ -75,17 +60,17 @@ class ScheduleController extends Controller
     public function update(Request $request, Schedule $schedule)
     {
         $validatedFields = $request->validate([
-            'schedule_status_id' => 'required|exists:schedule_statuses,id',
-            'starts_at' => 'required|date|after_or_equal:now',
-            'ends_at' => 'required|date|after:starts_at',
-            'notes' => 'nullable|string|max:500',
+            'id' => 'required|exists:schedules,id',
         ]);
 
-        $validatedFields['notes'] = strip_tags($validatedFields['notes']);
+        $validatedFields['schedule_status_id'] = ScheduleStatus::where('name', 'Booked')->value('id');
+        $validatedFields['client_id'] = Auth::id();
+
+        $schedule = Schedule::findOrFail($validatedFields['id']);
 
         $schedule->update($validatedFields);
 
-        return redirect()->route('provider.schedule.index');
+        return redirect()->route('client.appointment.index');
     }
 
     /**
@@ -93,23 +78,34 @@ class ScheduleController extends Controller
      */
     public function destroy(Schedule $schedule)
     {
-        $schedule->delete();
+        //
+    }
 
-        return redirect()->route('provider.schedule.index');
+    public function cancel(Schedule $schedule)
+    {
+        $schedule->client_id = null;
+        $schedule->schedule_status_id = ScheduleStatus::where('name', 'Available')->value('id');
+
+        $schedule->save();
+
+        return redirect()->route('client.appointment.index');
     }
 
     /**
-     * Return all schedules as a JSON object
+     * Return all appointments as a JSON object
      */
     public function events()
     {
-        $schedules = Schedule::with(['provider', 'client', 'status'])->get();
+        $schedules = Schedule::where('client_id', Auth::id())
+            ->with(['provider', 'client', 'status'])
+            ->orderBy('starts_at', 'DESC')
+            ->get();
 
         // Transform to only include the properties FullCalendar needs
         $events = $schedules->map(function ($schedule) {
             return [
                 'id' => $schedule->id,
-                'title' => $schedule->client->name ?? '',
+                'title' => $schedule->provider->name ?? '',
                 'start' => $schedule->starts_at,
                 'end' => $schedule->ends_at,
                 'display' => 'block',

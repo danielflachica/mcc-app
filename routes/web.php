@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\PostController;
@@ -50,21 +51,17 @@ Route::middleware(['auth', 'role:provider'])->prefix('/provider')->name('provide
         Route::put('/edit/{schedule}', [ScheduleController::class, 'update'])->name('update');
         Route::delete('/delete/{schedule}', [ScheduleController::class, 'destroy'])->name('destroy');
     });
-
-    Route::name('appointment.')->group(function () {
-        Route::get('/appointments', function () {
-            return 'Provider Appointments';
-        })->name('index');
-    });
 });
 
 Route::middleware(['auth', 'role:client'])->prefix('/client')->name('client.')->group(function () {
     Route::get('', [ClientController::class, 'index'])->name('index');
 
-    Route::name('appointment.')->group(function () {
-        Route::get('/appointments', function () {
-            return 'My Appointments';
-        })->name('index');
+    Route::name('appointment.')->prefix('/appointments')->group(function () {
+        Route::get('/', [AppointmentController::class, 'index'])->name('index');
+        Route::get('/events', [AppointmentController::class, 'events'])->name('events');
+        Route::get('/book', [AppointmentController::class, 'edit'])->name('edit');
+        Route::put('/book', [AppointmentController::class, 'update'])->name('update');
+        Route::put('/cancel/{schedule}', [AppointmentController::class, 'cancel'])->name('cancel');
     });
 
     // Route::post('/create-post', [PostController::class, 'create'])->name('create');

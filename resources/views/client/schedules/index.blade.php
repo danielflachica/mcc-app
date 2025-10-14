@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Mindcare Club | My Schedules')
+@section('title', 'Mindcare Club | My Appointments')
 
 @section('content')
 
@@ -8,9 +8,9 @@
 <x-card>
     <x-slot name="header">
         <div class="d-flex justify-content-between align-items-center">
-            <h3>My Schedules</h3>
-            <a href="{{ route('provider.schedule.create') }}">
-                <button type="button" class="btn btn-sm btn-primary">Add Schedule</button>
+            <h3>My Appointments</h3>
+            <a href="{{ route('client.appointment.edit') }}">
+                <button type="button" class="btn btn-sm btn-primary">Book Appointment</button>
             </a>
         </div>
     </x-slot>
@@ -20,33 +20,28 @@
             <table class="table table-striped table-hover align-middle">
                 <thead class="table-light">
                     <tr>
-                        <th scope="col">Client</th>
+                        <th scope="col">Provider</th>
                         <th scope="col">Status</th>
                         <th scope="col">Start</th>
                         <th scope="col">End</th>
-                        <th scope="col">Notes</th>
-                        <th scope="col">Date Created</th>
+                        <th scope="col">Provider Notes</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($schedules as $schedule)
                     <tr>
-                        <td>{{ $schedule->client->name ?? 'N/A' }}</td>
+                        <td>{{ $schedule->provider->name }}</td>
                         <td>{{ $schedule->status->name }}</td>
                         <td>{{ $schedule->starts_at->format('M d, Y h:i A') }}</td>
                         <td>{{ $schedule->ends_at->format('M d, Y h:i A') }}</td>
                         <td>{{ $schedule->notes }}</td>
-                        <td>{{ $schedule->created_at->format('M d, Y') }}</td>
                         <td>
                             <div class="d-flex align-items-center gap-2">
-                                <a href="{{ route('provider.schedule.edit', $schedule->id) }}">
-                                    <button type="button" class="btn btn-sm btn-primary">Edit</button>
-                                </a>
-                                <form action="{{ route('provider.schedule.destroy', $schedule->id) }}" method="POST">
+                                <form action="{{ route('client.appointment.cancel', $schedule->id) }}" method="POST">
                                     @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                    @method('PUT')
+                                    <button class="btn btn-sm btn-danger">Cancel</button>
                                 </form>
                             </div>
                         </td>

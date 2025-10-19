@@ -55,6 +55,23 @@
     @endforeach
 </div>
 
+@else
+
+<main>
+    <div class="card">
+        <div class="card-body">
+            <div class="d-block border w-100 p-3 mb-3 rounded bg-primary text-white">bg-primary text-white</div>
+            <div class="d-block border w-100 p-3 mb-3 rounded bg-secondary text-white">bg-secondary text-white</div>
+            <div class="d-block border w-100 p-3 mb-3 rounded bg-success text-white">bg-success text-white</div>
+            <div class="d-block border w-100 p-3 mb-3 rounded bg-info text-white">bg-info text-white</div>
+            <div class="d-block border w-100 p-3 mb-3 rounded bg-warning text-dark">bg-warning text-dark</div>
+            <div class="d-block border w-100 p-3 mb-3 rounded bg-danger text-white">bg-danger text-white</div>
+            <div class="d-block border w-100 p-3 mb-3 rounded bg-light text-dark">bg-light text-dark</div>
+            <div class="d-block border w-100 p-3 mb-3 rounded bg-dark text-white">bg-dark text-white</div>
+        </div>
+    </div>
+</main>
+
 @endauth
 
 @endsection

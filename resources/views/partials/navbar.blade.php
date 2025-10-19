@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg bg-light border-bottom mb-4">
     <div class="container">
-        <a class="navbar-brand fw-bold text-primary" href="/">{{ config('app.name', 'Mindcare Club') }}</a>
+        <a class="navbar-brand fw-bold text-primary" href="{{ route('home') }}">
+            <img src="{{ asset('img/mindcare_logo2.png') }}" height="50" class="ml-1"
+                alt="{{ config('app.name', 'Mindcare Club') }}">
+        </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +32,7 @@
             <ul class="navbar-nav ms-auto">
                 @auth
                 <li class="nav-item d-flex align-items-center">
-                    <div class="navbar-text me-3">
+                    <div class="navbar-text me-3 text-light">
                         Hello, <strong>{{ auth()->user()->name }}</strong>!
                     </div>
                 </li>

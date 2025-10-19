@@ -30,7 +30,7 @@
 @section('content')
 
 @auth
-<div id="calendar"></div>
+<div id="calendar" class="bg-white rounded p-3"></div>
 @endauth
 
 @endsection

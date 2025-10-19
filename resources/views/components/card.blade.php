@@ -1,6 +1,6 @@
 <div class="card {{ $class ?? '' }}">
     @isset($header)
-    <div class="card-title bg-light px-3 pb-1 pt-2 border-bottom">
+    <div class="card-title px-3 pb-1 pt-2 border-bottom rounded-top">
         {{ $header }}
     </div>
     @endisset

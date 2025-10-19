@@ -21,7 +21,7 @@
             <input type="password" class="form-control" id="loginPassword" name="loginPassword">
         </div>
 
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-secondary">Login</button>
     </form>
 </x-card>
 

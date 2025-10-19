@@ -14,7 +14,9 @@
     <div id="app" class="d-flex flex-column min-vh-100">
         {{-- Navbar --}}
         @include('partials.navbar')
-        <div style="height: 85px"></div>
+
+        {{-- Hero Section --}}
+        @yield('hero')
 
         {{-- Main Content --}}
         <main class="container py-4 flex-grow-1">

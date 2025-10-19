@@ -1,4 +1,4 @@
-<footer class="border-top mt-5 py-3 text-center text-light small bg-dark">
+<footer class="border-top mt-3 py-3 text-center text-light small bg-dark">
     <p class="m-0">
         &copy; {{ date('Y') }} {{ config('app.name', 'Mindcare Club') }}. All rights reserved.
     </p>

@@ -1,0 +1,70 @@
+// 1️. Override Bootstrap variables BEFORE importing it
+$primary: #3db5aa;
+$secondary: #f68b2b;
+$tertiary: #fcf0e2;
+$success: #1cc88a;
+$info: #36b9cc;
+$warning: #f6c23e;
+$danger: #e74a3b;
+$light: #f8f9fc;
+$dark: #2b485f;
+
+// Change the body background
+$body-bg: #f4f6f9;
+$body-color: #212529;
+
+// Change link colors
+$link-color: #2ea3f2;
+
+// Change fonts
+// $font-family-base: "Montserrat", Helvetica, Arial, Lucida, sans-serif;
+
+// Change button appearance
+$btn-border-radius: 100px;
+$btn-padding-x: 30px;
+$btn-padding-y: 10px;
+$btn-border-radius-lg: 100px;
+$btn-padding-x-lg: 30px;
+$btn-padding-y-lg: 10px;
+$btn-border-radius-sm: 100px;
+$btn-padding-x-sm: 15px;
+$btn-padding-y-sm: 5px;
+
+// Change navigation menu link appearance
+// $nav-link-hover-color: #edf000;
+
+// 2️. Import Bootstrap’s full source
+@import "bootstrap/scss/bootstrap";
+
+// 3. Custom CSS
+.btn,
+.btn:hover,
+.btn:focus,
+.btn:active {
+    color: $white !important;
+}
+
+.btn-outline-primary {
+    color: $primary !important;
+}
+
+.card {
+    background-color: $white !important;
+}
+
+.card-title {
+    background-color: $white !important;
+    color: $primary;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: #edf000 !important;
+}
+
+#bg-landing-img {
+    background: url('/public/img/landing-hero-img.jpg') no-repeat center bottom fixed;
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+}

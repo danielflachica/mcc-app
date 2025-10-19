@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light border-bottom mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary m-0 fixed-top">
     <div class="container">
         <a class="navbar-brand fw-bold text-primary" href="{{ route('home') }}">
             <img src="{{ asset('img/mindcare_logo2.png') }}" height="50" class="ml-1"
@@ -15,15 +15,18 @@
                 @auth
                 @if (auth()->user()->role->name == "Admin")
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Users</a>
+                    <a class="nav-link {{ request()->route()->getName() == 'admin.index' ? 'active' : '' }}"
+                        href="{{ route('home') }}">Users</a>
                 </li>
                 @elseif (auth()->user()->role->name == "Provider")
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('provider.schedule.index') }}">Schedules</a>
+                    <a class="nav-link {{ request()->route()->getName() == 'provider.schedule.index' ? 'active' : '' }}"
+                        href="{{ route('provider.schedule.index') }}">Schedules</a>
                 </li>
                 @elseif(auth()->user()->role->name == "Client")
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('client.appointment.index') }}">Appointments</a>
+                    <a class="nav-link {{ request()->route()->getName() == 'client.appointment.index' ? 'active' : '' }}"
+                        href="{{ route('client.appointment.index') }}">Appointments</a>
                 </li>
                 @endif
                 @endauth
@@ -44,10 +47,12 @@
                 </li>
                 @else
                 <li class="nav-item me-2">
-                    <a class="btn btn-sm btn-outline-primary" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link {{ request()->route()->getName() == 'login' ? 'active' : '' }}"
+                        href="{{ route('login') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Register</a>
+                    <a class="nav-link {{ request()->route()->getName() == 'register' ? 'active' : '' }}"
+                        href="{{ route('register') }}">Register</a>
                 </li>
                 @endauth
             </ul>

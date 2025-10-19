@@ -24,7 +24,7 @@
             <label for="inputPassword" class="form-label">Password</label>
             <input type="password" class="form-control" id="inputPassword" name="password">
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-secondary">Register</button>
     </form>
 </x-card>
 

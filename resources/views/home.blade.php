@@ -22,7 +22,7 @@
         </div>
 
         <div class="card mt-4">
-            <div class="card-title bg-light px-3 pb-1 pt-2 border-bottom">
+            <div class="card-title px-3 pb-1 pt-2 border-bottom rounded-top">
                 <h3>Create a New Post</h3>
             </div>
             <div class="card-body p-3 pt-1">
@@ -47,7 +47,7 @@
             @foreach ($posts as $post)
             <div class="card mt-4">
                 <div
-                    class="card-title bg-light px-3 pb-1 pt-2 border-bottom d-flex justify-content-between align-items-center">
+                    class="card-title px-3 pb-1 pt-2 border-bottom rounded-top d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-baseline gap-2">
                         <h4 class="m-0 mb-1">{{ $post->title }}</h4>
                         <p class="m-0 text-secondary">By {{ $post->author->name }} ({{ $post->author->role->name }})</p>
@@ -72,7 +72,7 @@
 
         @else
         <div class="card">
-            <div class="card-title bg-light px-3 pb-1 pt-2 border-bottom">
+            <div class="card-title px-3 pb-1 pt-2 border-bottom rounded-top">
                 <h3>Register</h3>
             </div>
             <div class="card-body p-3 pt-1">
@@ -98,7 +98,7 @@
         </div>
 
         <div class="card mt-4">
-            <div class="card-title bg-light px-3 pb-1 pt-2 border-bottom">
+            <div class="card-title px-3 pb-1 pt-2 border-bottom rounded-top">
                 <h3>Login</h3>
             </div>
             <div class="card-body p-3 pt-1">

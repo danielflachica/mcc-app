@@ -37,7 +37,7 @@
                         <td>{{ $schedule->ends_at->format('M d, Y h:i A') }}</td>
                         <td>{{ $schedule->notes }}</td>
                         <td>
-                            <div class="d-flex align-items-center gap-2">
+                            <div class="d-flex align-items-center justify-content-end gap-2">
                                 <form action="{{ route('client.appointment.cancel', $schedule->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')

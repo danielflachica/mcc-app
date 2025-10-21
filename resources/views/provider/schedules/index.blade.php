@@ -39,7 +39,7 @@
                         <td>{{ $schedule->notes }}</td>
                         <td>{{ $schedule->created_at->format('M d, Y') }}</td>
                         <td>
-                            <div class="d-flex align-items-center gap-2">
+                            <div class="d-flex align-items-center justify-content-end gap-2">
                                 <a href="{{ route('provider.schedule.edit', $schedule->id) }}">
                                     <button type="button" class="btn btn-sm btn-primary">Edit</button>
                                 </a>

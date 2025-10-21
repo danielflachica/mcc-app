@@ -35,7 +35,7 @@
                         <td>{{ $user->role->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            <div class="d-flex align-items-center gap-2">
+                            <div class="d-flex align-items-center justify-content-end gap-2">
                                 <a href="{{ route('admin.edit', $user->id) }}">
                                     <button type="button" class="btn btn-sm btn-primary">Edit</button>
                                 </a>

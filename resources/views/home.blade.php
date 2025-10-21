@@ -52,7 +52,7 @@
                         <h4 class="m-0 mb-1">{{ $post->title }}</h4>
                         <p class="m-0 text-secondary">By {{ $post->author->name }} ({{ $post->author->role->name }})</p>
                     </div>
-                    <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center justify-content-end gap-2">
                         <a href="/edit-post/{{ $post->id }}">
                             <button type="button" class="btn btn-sm btn-primary">Edit</button>
                         </a>

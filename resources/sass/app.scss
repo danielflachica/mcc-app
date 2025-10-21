@@ -29,6 +29,7 @@ $warning: #f6c23e;
 $danger: #e74a3b;
 $light: #f8f9fc;
 $dark: #2b485f;
+$white: #ffffff;
 
 // Change the body background
 $body-bg: #f4f6f9;
@@ -229,4 +230,10 @@ b {
 .glass-hover-raise:hover {
     transform: translateY(-6px);
     box-shadow: 0 18px 36px rgba(16, 24, 40, 0.32);
+}
+
+.alert.alert-danger {
+    background-color: transparent !important;
+    border: 1px solid $danger !important;
+    color: tint-color($danger, 10%) !important;
 }

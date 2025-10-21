@@ -24,13 +24,13 @@ class UserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home');
+        return redirect()->route('register');
     }
 
     public function login(Request $request)
     {
         $validatedFields = $request->validate([
-            'loginEmail' => 'required',
+            'loginEmail' => 'required|email',
             'loginPassword' => 'required'
         ]);
 
@@ -51,10 +51,9 @@ class UserController extends Controller
             }
         }
 
-        // return back()->withErrors([
-        //     'loginEmail' => 'Invalid credentials.',
-        // ]);
-        return redirect()->route('home');
+        return back()
+            ->withErrors(['loginError' => 'Invalid email or password. Please try again.'])
+            ->withInput($request->only('loginEmail'));
     }
 
     public function logout()

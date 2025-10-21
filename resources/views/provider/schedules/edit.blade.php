@@ -11,6 +11,8 @@
         <h3 class="my-1">Edit Schedule</h3>
     </x-slot>
 
+    <x-error-list class="list-unstyled"></x-error-list>
+
     <form action="{{ route('provider.schedule.update', $schedule->id) }}" method="POST">
         @csrf
         @method('PUT')

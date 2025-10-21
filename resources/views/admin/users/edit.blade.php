@@ -11,6 +11,8 @@
         <h3 class="my-1">Edit User</h3>
     </x-slot>
 
+    <x-error-list class="list-unstyled"></x-error-list>
+
     <form action="{{ route('admin.update', $user->id) }}" method="POST">
         @csrf
         @method('PUT')

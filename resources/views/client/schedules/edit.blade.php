@@ -11,6 +11,8 @@
         <h3 class="my-1">Book Appointment</h3>
     </x-slot>
 
+    <x-error-list class="list-unstyled"></x-error-list>
+
     <form action="{{ route('client.appointment.update') }}" method="POST">
         @csrf
         @method('PUT')

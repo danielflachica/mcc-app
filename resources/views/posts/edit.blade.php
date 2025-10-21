@@ -12,6 +12,8 @@
         <h3 class="my-1">Edit Post</h3>
     </x-slot>
 
+    <x-error-list class="list-unstyled"></x-error-list>
+
     <form action="/edit-post/{{ $post->id }}" method="POST">
         @csrf
         @method('PUT')

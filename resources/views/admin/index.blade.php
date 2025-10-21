@@ -8,7 +8,7 @@
 <x-card>
     <x-slot name="header">
         <div class="d-flex justify-content-between align-items-center">
-            <h3>All Users</h3>
+            <h3 class="my-1">All Users</h3>
             <a href="{{ route('admin.create') }}">
                 <button type="button" class="btn btn-sm btn-primary">Add User</button>
             </a>

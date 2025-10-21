@@ -8,7 +8,7 @@
 
 <x-card>
     <x-slot name="header">
-        <h3>Edit User</h3>
+        <h3 class="my-1">Edit User</h3>
     </x-slot>
 
     <form action="{{ route('admin.update', $user->id) }}" method="POST">

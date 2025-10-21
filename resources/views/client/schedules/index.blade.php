@@ -8,7 +8,7 @@
 <x-card>
     <x-slot name="header">
         <div class="d-flex justify-content-between align-items-center">
-            <h3>My Appointments</h3>
+            <h3 class="my-1">My Appointments</h3>
             <a href="{{ route('client.appointment.edit') }}">
                 <button type="button" class="btn btn-sm btn-primary">Book Appointment</button>
             </a>

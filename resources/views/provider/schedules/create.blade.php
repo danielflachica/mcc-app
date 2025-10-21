@@ -8,7 +8,7 @@
 
 <x-card>
     <x-slot name="header">
-        <h3>Add a New Schedule</h3>
+        <h3 class="my-1">Add a New Schedule</h3>
     </x-slot>
 
     <form action="{{ route('provider.schedule.store') }}" method="POST">

@@ -9,7 +9,7 @@
 
 <x-card>
     <x-slot name="header">
-        <h3>Edit Post</h3>
+        <h3 class="my-1">Edit Post</h3>
     </x-slot>
 
     <form action="/edit-post/{{ $post->id }}" method="POST">

@@ -16,7 +16,7 @@
     <div class="col col-12 col-md-8 col-lg-6 mx-auto">
         <x-card>
             <x-slot name="header">
-                <h3>Register</h3>
+                <h3 class="my-1">Register</h3>
             </x-slot>
 
             <form action="{{ route('register') }}" method="POST">

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary m-0 fixed-top">
     <div class="container">
         <a class="navbar-brand pt-0 fw-bold text-primary" href="{{ route('home') }}">
-            <img src="{{ asset('img/mindcare_logo2.png') }}" height="55" class="ml-1"
+            <img src="{{ asset('img/mindcare_logo1.png') }}" height="55" class="ml-1"
                 alt="{{ config('app.name', 'Mindcare Club') }}">
         </a>
 
@@ -42,7 +42,7 @@
                 <li class="nav-item d-flex align-items-center">
                     <form action="{{ route('logout') }}" method="POST" class="d-inline">
                         @csrf
-                        <button class="btn btn-sm btn-outline-danger">Logout</button>
+                        <button class="btn btn-sm btn-outline-secondary">Logout</button>
                     </form>
                 </li>
                 @else

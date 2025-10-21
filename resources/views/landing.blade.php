@@ -13,7 +13,7 @@
 
 <x-card>
     <x-slot name="header">
-        <h3>Create a New Post</h3>
+        <h3 class="my-1">Create a New Post</h3>
     </x-slot>
 
     <form action="/create-post" method="POST">
@@ -32,7 +32,7 @@
 </x-card>
 
 <div class="mt-4">
-    <h3>All Posts</h3>
+    <h3 class="my-1">All Posts</h3>
     @foreach ($posts as $post)
     <x-card class="mt-4">
         <x-slot name="header">

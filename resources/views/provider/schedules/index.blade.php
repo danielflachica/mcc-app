@@ -8,7 +8,7 @@
 <x-card>
     <x-slot name="header">
         <div class="d-flex justify-content-between align-items-center">
-            <h3>My Schedules</h3>
+            <h3 class="my-1">My Schedules</h3>
             <a href="{{ route('provider.schedule.create') }}">
                 <button type="button" class="btn btn-sm btn-primary">Add Schedule</button>
             </a>

@@ -8,7 +8,7 @@
 
 <x-card>
     <x-slot name="header">
-        <h3>Book Appointment</h3>
+        <h3 class="my-1">Book Appointment</h3>
     </x-slot>
 
     <form action="{{ route('client.appointment.update') }}" method="POST">

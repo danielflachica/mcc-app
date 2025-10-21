@@ -1,4 +1,25 @@
-// 1️. Override Bootstrap variables BEFORE importing it
+/* =============================
+   Font Imports
+============================= */
+// Nunito: 400, 600, 700
+@import "@fontsource/nunito/400.css";
+@import "@fontsource/nunito/600.css";
+@import "@fontsource/nunito/700.css";
+
+// Montserrat: 400, 600, 700
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/600.css";
+@import "@fontsource/montserrat/700.css";
+
+// Open Sans: 400, 600, 700
+@import "@fontsource/open-sans/400.css";
+@import "@fontsource/open-sans/600.css";
+@import "@fontsource/open-sans/700.css";
+
+/* =============================
+   1. Bootstrap Variable Overrides
+   (must come BEFORE import)
+============================= */
 $primary: #3db5aa;
 $secondary: #f68b2b;
 $tertiary: #fcf0e2;
@@ -17,7 +38,9 @@ $body-color: #212529;
 $link-color: #2ea3f2;
 
 // Change fonts
-// $font-family-base: "Montserrat", Helvetica, Arial, Lucida, sans-serif;
+$font-family-base: "Nunito", sans-serif;
+$headings-font-family: "Montserrat", sans-serif;
+$headings-font-weight: 600;
 
 // Change button appearance
 $btn-border-radius: 100px;
@@ -33,10 +56,14 @@ $btn-padding-y-sm: 5px;
 // Change navigation menu link appearance
 // $nav-link-hover-color: #edf000;
 
-// 2️. Import Bootstrap’s full source
+/* =============================
+   2. Import Bootstrap
+============================= */
 @import "bootstrap/scss/bootstrap";
 
-// 3. Custom CSS
+/* =============================
+   3. Custom Styles / Overrides
+============================= */
 :root {
     /* tweak these to match your color palette */
     --glass-bg: rgba(255, 255, 255, 0.12);
@@ -47,10 +74,45 @@ $btn-padding-y-sm: 5px;
     --glass-accent: rgba(255, 255, 255, 0.25); /* for subtle highlight */
 }
 
+body {
+    font-family: "Nunito", sans-serif;
+    line-height: 1.6;
+}
+
+h1,
+h2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+}
+
+h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+}
+
+h4,
+h5,
+h6 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+
+strong,
+b {
+    font-weight: 700 !important; // Force true bold
+}
+
+.navbar,
+.navbar-nav .nav-link {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+}
+
 .btn,
 .btn:hover,
 .btn:focus,
 .btn:active {
+    font-family: "Montserrat", sans-serif;
     color: $white !important;
 }
 

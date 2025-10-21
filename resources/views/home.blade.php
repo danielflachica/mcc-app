@@ -23,7 +23,7 @@
 
         <div class="card mt-4">
             <div class="card-title px-3 pb-1 pt-2 border-bottom rounded-top">
-                <h3>Create a New Post</h3>
+                <h3 class="my-1">Create a New Post</h3>
             </div>
             <div class="card-body p-3 pt-1">
                 <form action="/create-post" method="POST">
@@ -43,7 +43,7 @@
         </div>
 
         <div class="mt-4">
-            <h3>All Posts</h3>
+            <h3 class="my-1">All Posts</h3>
             @foreach ($posts as $post)
             <div class="card mt-4">
                 <div
@@ -73,7 +73,7 @@
         @else
         <div class="card">
             <div class="card-title px-3 pb-1 pt-2 border-bottom rounded-top">
-                <h3>Register</h3>
+                <h3 class="my-1">Register</h3>
             </div>
             <div class="card-body p-3 pt-1">
                 <form action="/register" method="POST">
@@ -99,7 +99,7 @@
 
         <div class="card mt-4">
             <div class="card-title px-3 pb-1 pt-2 border-bottom rounded-top">
-                <h3>Login</h3>
+                <h3 class="my-1">Login</h3>
             </div>
             <div class="card-body p-3 pt-1">
                 <form action="/login" method="POST">

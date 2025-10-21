@@ -93,7 +93,8 @@ h3 {
 
 h4,
 h5,
-h6 {
+h6,
+.fc-toolbar-title {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
 }
@@ -236,4 +237,10 @@ b {
     background-color: transparent !important;
     border: 1px solid $danger !important;
     color: tint-color($danger, 10%) !important;
+}
+
+.fc-button-primary {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 14px !important;
+    text-transform: capitalize !important;
 }

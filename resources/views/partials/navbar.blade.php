@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary m-0 fixed-top">
     <div class="container">
-        <a class="navbar-brand fw-bold text-primary" href="{{ route('home') }}">
-            <img src="{{ asset('img/mindcare_logo2.png') }}" height="50" class="ml-1"
+        <a class="navbar-brand pt-0 fw-bold text-primary" href="{{ route('home') }}">
+            <img src="{{ asset('img/mindcare_logo2.png') }}" height="55" class="ml-1"
                 alt="{{ config('app.name', 'Mindcare Club') }}">
         </a>
 

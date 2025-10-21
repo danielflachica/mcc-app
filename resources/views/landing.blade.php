@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-{{-- @section('title', 'MindCare Club') --}}
+@section('title', config('app.name', 'Mindcare Club') . ' | Mental health and wellness for every Filipino, everywhere')
 
 @section('hero')
 {{-- Landing Image --}}

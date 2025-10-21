@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Mindcare Club | Login')
+@section('title', 'Login | ' . config('app.name', 'Mindcare Club'))
 
 @section('content')
 

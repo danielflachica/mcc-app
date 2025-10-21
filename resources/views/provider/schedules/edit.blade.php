@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Mindcare Club | Edit Schedule')
+@section('title', 'Edit Schedule | ' . config('app.name', 'Mindcare Club'))
 
 @section('content')
 

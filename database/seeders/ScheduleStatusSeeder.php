@@ -27,7 +27,7 @@ class ScheduleStatusSeeder extends Seeder
         ]);
         DB::table('schedule_statuses')->insert([
             'name' => 'Cancelled',
-            'background_color' => '#e74a3b',
+            'background_color' => '#adb5bd',
             'text_color' => '#FFFFFF',
             'created_at' => Carbon::now(),
         ]);

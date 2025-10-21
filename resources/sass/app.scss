@@ -37,6 +37,16 @@ $btn-padding-y-sm: 5px;
 @import "bootstrap/scss/bootstrap";
 
 // 3. Custom CSS
+:root {
+    /* tweak these to match your color palette */
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: 0 8px 24px rgba(16, 24, 40, 0.25);
+    --glass-radius: 12px;
+    --glass-padding: 1rem;
+    --glass-accent: rgba(255, 255, 255, 0.25); /* for subtle highlight */
+}
+
 .btn,
 .btn:hover,
 .btn:focus,
@@ -63,7 +73,8 @@ $btn-padding-y-sm: 5px;
 }
 
 #bg-landing-img {
-    background: url('/public/img/landing-hero-img.jpg') no-repeat center bottom fixed;
+    background: url("/public/img/landing-hero-img.jpg") no-repeat center bottom
+        fixed;
     background-size: cover;
     height: 300px;
     width: 100%;
@@ -73,4 +84,87 @@ $btn-padding-y-sm: 5px;
     height: 110px;
     width: 110px;
     object-fit: cover;
+}
+
+/* Base glass card */
+.glass {
+    position: relative;
+    background: var(--glass-bg); /* fallback background */
+    border-radius: var(--glass-radius);
+    padding: var(--glass-padding);
+    box-shadow: var(--glass-shadow);
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+    color: inherit;
+}
+
+/* Preferred: use backdrop-filter where supported */
+@supports (
+    (-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))
+) {
+    .glass {
+        -webkit-backdrop-filter: blur(8px) saturate(120%);
+        backdrop-filter: blur(8px) saturate(120%);
+        /* make background slightly more translucent when filter is applied */
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.06) 100%
+        );
+    }
+
+    /* subtle top accent line */
+    .glass::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--glass-accent),
+            transparent
+        );
+        pointer-events: none;
+        mix-blend-mode: overlay;
+    }
+}
+
+/* Respect users who prefer reduced transparency/motion */
+@media (prefers-reduced-transparency: reduce),
+    (prefers-reduced-motion: reduce) {
+    .glass {
+        background: rgba(255, 255, 255, 0.9);
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        box-shadow: 0 4px 8px rgba(16, 24, 40, 0.12);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+}
+
+/* Small helpers — variants */
+.glass-sm {
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+.glass-lg {
+    padding: 1.5rem;
+    border-radius: 16px;
+}
+
+/* Example utility for text contrast when used over light background */
+.glass--dark-text {
+    color: #0b1220;
+}
+.glass--light-text {
+    color: #fff;
+}
+
+/* Optional subtle animation on hover */
+.glass-hover-raise {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.glass-hover-raise:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 36px rgba(16, 24, 40, 0.32);
 }
